@@ -34,3 +34,5 @@ fclean	:
 		$(RM) $(NAME_CLIENT) $(NAME_SERVER) $(CLIENT_BONUS) $(SERVER_BONUS)
 		
 re	:    fclean all
+
+.PHONY : clean fclean

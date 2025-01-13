@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/13 08:23:23 by tamounir          #+#    #+#             */
+/*   Updated: 2025/01/13 08:23:24 by tamounir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 static void	ft_bit_sender(int pid, char chara)
@@ -11,7 +23,7 @@ static void	ft_bit_sender(int pid, char chara)
 		{
 			if (kill(pid, SIGUSR1) == -1)
 			{
-				write (2, "\e[033;0;31m→  PID not correct. ❌\e[0m\n", 47);
+				write (2, "\e[033;0;31m→  PID not correct. ❌\e[0m\n", 42);
 				exit(0);
 			}
 		}
@@ -19,11 +31,11 @@ static void	ft_bit_sender(int pid, char chara)
 		{
 			if (kill(pid, SIGUSR2) == -1)
 			{
-				write (2, "\e[033;0;31m→  PID not correct. ❌\e[0m\n", 47);
+				write (2, "\e[033;0;31m→  PID not correct. ❌\e[0m\n", 42);
 				exit(0);
 			}
 		}
-		usleep(800);
+		usleep(1000);
 		bit++;
 	}
 }
@@ -45,9 +57,7 @@ void	ft_send_message(int pid, char *msg)
 int	main(int ac, char **av)
 {
 	int	pid;
-	int	i;
 
-	i = 0;
 	if (ac == 3 && av[2][0] != '\0')
 	{
 		pid = ft_atoi(av[1]);
