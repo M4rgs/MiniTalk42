@@ -16,7 +16,6 @@ Minitalk is a small client-server communication program implemented using UNIX s
 - Unix-like operating system
 - GCC compiler
 - Make
-- The libft library (included)
 
 ## 💻 Usage
 
