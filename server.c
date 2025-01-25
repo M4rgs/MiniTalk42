@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:37 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/13 08:23:38 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/25 23:47:07 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ft_handler(int signal, siginfo_t *info, void *s)
 	if (bit == 8)
 	{
 		if (c != '\0')
-			ft_putchar_fd(c, 1);
+			ft_putchar(c);
 		bit = 0;
 		c = 0;
 	}
@@ -41,9 +41,9 @@ static void	ft_handler(int signal, siginfo_t *info, void *s)
 
 static void	ft_pid_print(int pid)
 {
-	ft_putstr_fd("\e[035;4mServer PID  ➤\e[0m\t\e[0m", 1);
-	ft_putnbr_fd(pid, 1);
-	ft_putstr_fd("\n\n\e[038;5;236m ✸  Waiting The Message  ✸ \e[0m\n", 1);
+	ft_putstr("\e[035;4mServer PID  ➤\e[0m\t\e[0m");
+	ft_putnbr(pid);
+	ft_putstr("\n\n\e[038;5;236m ✸  Waiting The Message  ✸ \e[0m\n");
 }
 
 int	main(void)

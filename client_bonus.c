@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:29 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/13 08:23:30 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/26 00:01:44 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static void	succeeded(int signal)
 {
 	if (signal == SIGUSR1)
 	{
-		ft_putstr_fd("\e[35m⚡︎\e[0m\e[1;34m    Server received message ✅\e[0m\
-      \e[35m⚡︎\e[0m\n", 1);
+		ft_putstr("\e[35m⚡︎\e[0m\e[1;34m    Server received message ✅\e[0m\
+      \e[35m⚡︎\e[0m\n");
 	}
 	exit (0);
 }
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_putstr_fd("\e[033;0;31m→  Error: Wrong Format\e[0m\n", 2);
-		ft_putstr_fd("\e[033;0;35m→  Try: ./client [PID] [MESSAGE]\e[0m\n", 2);
+		ft_putstr("\e[033;0;31m→  Error: Wrong Format\e[0m\n");
+		ft_putstr("\e[033;0;35m→  Try: ./client [PID] [MESSAGE]\e[0m\n");
 	}
 }

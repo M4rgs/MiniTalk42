@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:23 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/13 08:23:24 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/26 00:04:10 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		ft_putstr_fd("\e[033;0;31m→  Error: Wrong Format\e[0m\n", 2);
-		ft_putstr_fd("\e[033;0;35m→  Try: ./client [PID] [MESSAGE]\e[0m\n", 2);
+		ft_putstr("\e[033;0;31m→  Error: Wrong Format\e[0m\n");
+		ft_putstr("\e[033;0;35m→  Try: ./client [PID] [MESSAGE]\e[0m\n");
 	}
 }
