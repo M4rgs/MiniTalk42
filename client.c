@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:23 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/27 03:06:07 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/27 03:27:08 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_bit_sender(int pid, char chara)
 				exit(0);
 			}
 		}
-		usleep(1000);
+		usleep(600);
 		bit++;
 	}
 }
