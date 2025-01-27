@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:39 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/26 00:03:42 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/27 03:07:14 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	ft_putnbr(int n)
 
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	signe;
-	int	resu;
+	int		i;
+	int		signe;
+	long	resu;
 
 	i = 0;
 	signe = 1;
@@ -68,6 +68,8 @@ int	ft_atoi(char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		resu = resu * 10 + (str[i] - 48);
+		if (resu * signe > 2147483647 || resu * signe < -2147483648)
+			return (-1);
 		i++;
 	}
 	return (resu * signe);

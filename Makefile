@@ -14,10 +14,10 @@ RM	= rm -rf
 
 all	: $(NAME_CLIENT) $(NAME_SERVER)
 
-$(NAME_CLIENT) : client.c minitalk.h
+$(NAME_CLIENT) : client.c minitalk.h utils.c
 		$(CC) $(CFLAGS) client.c utils.c -o client
 
-$(NAME_SERVER) : server.c minitalk.h
+$(NAME_SERVER) : server.c minitalk.h utils.c
 		$(CC) $(CFLAGS) server.c utils.c -o server
 
 bonus	: $(CLIENT_BONUS) $(SERVER_BONUS)

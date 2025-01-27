@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:29 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/26 00:01:44 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/27 03:07:33 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ int	main(int argc, char **argv)
 	if (argc == 3 && argv[2][0] != '\0')
 	{
 		pid = ft_atoi(argv[1]);
+		if (pid <= 0)
+		{
+			ft_putstr("\e[033;0;31m→  PID not correct. ❌\e[0m\n");
+			return (1);
+		}
 		signal(SIGUSR1, succeeded);
 		ft_send_str(pid, argv[2]);
 		while (1)
