@@ -6,37 +6,42 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:37 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/25 23:47:07 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/28 02:42:05 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	ft_handler(int signal, siginfo_t *info, void *s)
+static void	ft_reset(int *bit, int *c)
 {
-	static char	c;
+	write (2, "\n", 1);
+	*bit = 0;
+	*c = 0;
+}
+
+static void	ft_handler(int signal1, siginfo_t *info, void *s)
+{
+	static int	c;
 	static int	bit;
 	static int	pid;
 
 	(void)s;
-	if (!pid)
-		pid = info->si_pid;
 	if (pid != info->si_pid)
 	{
+		ft_reset(&bit, &c);
 		pid = info->si_pid;
-		bit = 0;
-		c = 0;
 	}
-	if (signal == SIGUSR1)
+	if (signal1 == SIGUSR1)
 		c += (1 << bit);
 	bit++;
 	if (bit == 8)
 	{
-		if (c != '\0')
-			ft_putchar(c);
+		ft_putchar((char)c);
 		bit = 0;
 		c = 0;
 	}
+	usleep(800);
+	kill(info->si_pid, SIGUSR1);
 }
 
 static void	ft_pid_print(int pid)
@@ -59,4 +64,5 @@ int	main(void)
 	sigaction(SIGUSR2, &sig, NULL);
 	while (1)
 		pause();
+	return (0);
 }

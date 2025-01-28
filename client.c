@@ -6,17 +6,24 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:23 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/27 03:57:19 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/27 23:30:54 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+static void	ft_reciver(int sig)
+{
+	if (sig == SIGUSR1)
+		return ;
+}
 
 static void	ft_bit_sender(int pid, char chara)
 {
 	int	bit;
 
 	bit = 0;
+	signal(SIGUSR1, ft_reciver);
 	while (bit < 8)
 	{
 		if ((chara & (1 << bit)) != 0)
@@ -35,12 +42,12 @@ static void	ft_bit_sender(int pid, char chara)
 				exit(0);
 			}
 		}
-		usleep(600);
+		pause();
 		bit++;
 	}
 }
 
-void	ft_send_message(int pid, char *msg)
+static int	ft_send_message(int pid, char *msg)
 {
 	int	i;
 
@@ -50,8 +57,8 @@ void	ft_send_message(int pid, char *msg)
 		ft_bit_sender(pid, msg[i]);
 		i++;
 	}
-	ft_bit_sender(pid, '\n');
 	ft_bit_sender(pid, '\0');
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -73,4 +80,5 @@ int	main(int ac, char **av)
 		ft_putstr("\e[033;0;31m→  Error: Wrong Format\e[0m\n");
 		ft_putstr("\e[033;0;35m→  Try: ./client [PID] [MESSAGE]\e[0m\n");
 	}
+	return (0);
 }
