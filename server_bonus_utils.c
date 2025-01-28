@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   server_bonus_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 08:23:34 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/28 04:08:51 by tamounir         ###   ########.fr       */
+/*   Created: 2025/01/13 08:23:39 by tamounir          #+#    #+#             */
+/*   Updated: 2025/01/28 04:21:15 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
+void	ft_settozeros(char *b, int len)
+{
+	int		i;
 
-int		ft_atoi(char *str);
-void	ft_putchar(char c);
-void	ft_putstr(char *s);
-void	ft_putnbr(int n);
-void	ft_customjoinn(char *z, char c);
-void	ft_settozeros(char *b, int len);
-void	ft_reset(int *bit, int *c, char *z);
-void	ft_finish(char *z, int pid);
+	i = 0;
+	while (i < len)
+	{
+		b[i] = 0;
+		i++;
+	}
+}
 
-#endif
+void	ft_reset(int *bit, int *c, char *z)
+{
+	write (2, "\n", 1);
+	*bit = 0;
+	*c = 0;
+	ft_settozeros(z, 7000000);
+}
+
+void	ft_finish(char *z, int pid)
+{
+	ft_putstr(z);
+	ft_settozeros(z, 7000000);
+	kill(pid, SIGUSR1);
+}

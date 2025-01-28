@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:29 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/27 23:30:18 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/28 05:48:35 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	ft_bit_sender(int pid, char chara)
 			if (kill(pid, SIGUSR1) == -1)
 			{
 				write (2, "\e[033;0;31m→  PID not correct. ❌\e[0m\n", 42);
-				exit(0);
+				exit(1);
 			}
 		}
 		else
@@ -45,7 +45,7 @@ static void	ft_bit_sender(int pid, char chara)
 			if (kill(pid, SIGUSR2) == -1)
 			{
 				write (2, "\e[033;0;31m→  PID not correct. ❌\e[0m\n", 42);
-				exit(0);
+				exit(1);
 			}
 		}
 		pause();

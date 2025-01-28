@@ -24,8 +24,8 @@ bonus	: $(CLIENT_BONUS) $(SERVER_BONUS)
 $(CLIENT_BONUS)	: client_bonus.c minitalk.h utils.c
 		$(CC) $(CFLAGS) client_bonus.c utils.c -o client_bonus
 
-$(SERVER_BONUS)	: server_bonus.c minitalk.h utils.c
-		$(CC) $(CFLAGS) server_bonus.c utils.c -o server_bonus
+$(SERVER_BONUS)	: server_bonus.c minitalk.h utils.c server_bonus_utils.c
+		$(CC) $(CFLAGS) server_bonus.c utils.c server_bonus_utils.c -o server_bonus
 clean	:
 		$(RM) $(NAME_CLIENT) $(NAME_SERVER) $(CLIENT_BONUS) $(SERVER_BONUS)
 

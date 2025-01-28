@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <string.h>
 
 void	ft_putchar(char c)
 {
@@ -76,31 +75,16 @@ int	ft_atoi(char *str)
 	return (resu * signe);
 }
 
-char	*ft_customjoinn(char *str, char c)
+void	ft_customjoinn(char *z, char c)
 {
 	int		i;
-	char	*swap;
 
 	i = 0;
-	if (str)
+	if (z)
 	{
-		while (str[i])
+		while (z[i])
 			i++;
 	}
-	swap = malloc(sizeof(char) * (i + 2));
-	if (!swap)
-		exit(1);
-	i = 0;
-	if (str)
-	{
-		while (str[i] != '\0')
-		{
-			swap[i] = str[i];
-			i++;
-		}
-		free(str);
-	}
-	swap[i] = c;
-	swap[i + 1] = '\0';
-	return (swap);
+	z[i] = c;
+	z[i + 1] = '\0';
 }
