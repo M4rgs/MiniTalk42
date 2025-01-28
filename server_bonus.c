@@ -6,17 +6,27 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:32 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/28 02:42:35 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/28 04:08:46 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	ft_reset(int *bit, int *c)
+static char	*ft_reset(int *bit, int *c, char *p)
 {
 	write (2, "\n", 1);
 	*bit = 0;
 	*c = 0;
+	free(p);
+	return (NULL);
+}
+
+static char	*ft_finish(char *p, int pid)
+{
+	ft_putstr(p);
+	kill(pid, SIGUSR1);
+	free(p);
+	return (NULL);
 }
 
 static void	ft_handler(int signal, siginfo_t *info, void *s)
@@ -24,11 +34,12 @@ static void	ft_handler(int signal, siginfo_t *info, void *s)
 	static int	c;
 	static int	bit;
 	static int	pid;
+	static char	*p;
 
 	(void)s;
 	if (pid != info->si_pid)
 	{
-		ft_reset(&bit, &c);
+		p = ft_reset(&bit, &c, p);
 		pid = info->si_pid;
 	}
 	if (signal == SIGUSR1)
@@ -36,10 +47,9 @@ static void	ft_handler(int signal, siginfo_t *info, void *s)
 	bit++;
 	if (bit == 8)
 	{
-		if (c != '\0')
-			ft_putchar((char)c);
-		else
-			kill(pid, SIGUSR1);
+		p = ft_customjoinn(p, (char)c);
+		if (c == '\0')
+			p = ft_finish(p, pid);
 		bit = 0;
 		c = 0;
 	}

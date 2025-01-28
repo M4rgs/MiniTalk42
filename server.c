@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:37 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/28 02:42:05 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/28 04:07:08 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	ft_handler(int signal1, siginfo_t *info, void *s)
 	kill(info->si_pid, SIGUSR1);
 }
 
-static void	ft_pid_print(int pid)
+void	ft_pid_print(int pid)
 {
 	ft_putstr("\e[035;4mServer PID  ➤\e[0m\t\e[0m");
 	ft_putnbr(pid);

@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:34 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/28 02:32:34 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/28 04:08:51 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 int		ft_atoi(char *str);
 void	ft_putchar(char c);
 void	ft_putstr(char *s);
+char	*ft_customjoinn(char *str, char c);
 void	ft_putnbr(int n);
 
 #endif

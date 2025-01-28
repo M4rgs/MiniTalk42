@@ -6,11 +6,12 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 08:23:39 by tamounir          #+#    #+#             */
-/*   Updated: 2025/01/27 03:07:14 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/01/28 04:21:15 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <string.h>
 
 void	ft_putchar(char c)
 {
@@ -73,4 +74,33 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	return (resu * signe);
+}
+
+char	*ft_customjoinn(char *str, char c)
+{
+	int		i;
+	char	*swap;
+
+	i = 0;
+	if (str)
+	{
+		while (str[i])
+			i++;
+	}
+	swap = malloc(sizeof(char) * (i + 2));
+	if (!swap)
+		exit(1);
+	i = 0;
+	if (str)
+	{
+		while (str[i] != '\0')
+		{
+			swap[i] = str[i];
+			i++;
+		}
+		free(str);
+	}
+	swap[i] = c;
+	swap[i + 1] = '\0';
+	return (swap);
 }

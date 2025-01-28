@@ -8,8 +8,7 @@ SERVER_BONUS = server_bonus
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
-
+CFLAGS = -Wall -Wextra -Werror
 RM	= rm -rf
 
 all	: $(NAME_CLIENT) $(NAME_SERVER)
@@ -22,10 +21,10 @@ $(NAME_SERVER) : server.c minitalk.h utils.c
 
 bonus	: $(CLIENT_BONUS) $(SERVER_BONUS)
 
-$(CLIENT_BONUS)	: client_bonus.c minitalk.h
+$(CLIENT_BONUS)	: client_bonus.c minitalk.h utils.c
 		$(CC) $(CFLAGS) client_bonus.c utils.c -o client_bonus
 
-$(SERVER_BONUS)	: server_bonus.c minitalk.h
+$(SERVER_BONUS)	: server_bonus.c minitalk.h utils.c
 		$(CC) $(CFLAGS) server_bonus.c utils.c -o server_bonus
 clean	:
 		$(RM) $(NAME_CLIENT) $(NAME_SERVER) $(CLIENT_BONUS) $(SERVER_BONUS)
